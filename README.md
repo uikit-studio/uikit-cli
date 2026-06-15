@@ -19,6 +19,7 @@ Or run any command one-off with `npx uikit-studio <command>`.
 
 ```
 uikit new <src> <dir>     Clone (git URL) or copy (local path) a kit into <dir>, then init it
+uikit remix <src> <dir>   Like new, + a REMIX.md brief to restyle/restructure into a new kit
 uikit init [path]         Wire a cloned kit's consumer skill into the project (writes CLAUDE.md)
 uikit add <item...>       Copy components/blocks/templates (and their deps) into your project
 uikit validate [path]     Validate a uikit.json against the contract

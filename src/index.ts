@@ -3,6 +3,7 @@ import { add } from "./commands/add.js";
 import { info } from "./commands/info.js";
 import { init } from "./commands/init.js";
 import { newKit } from "./commands/new.js";
+import { remix } from "./commands/remix.js";
 import { validate } from "./commands/validate.js";
 import { log, pc } from "./lib/log.js";
 
@@ -15,12 +16,14 @@ ${pc.bold("Commands")}
   init [path]              Wire a cloned kit's skill into the project
   add <item...>            Copy components/blocks/templates into your project
   new <src> <dir>          Clone/copy a kit into <dir> and init it
+  remix <src> <dir>        Like new, + a brief to restyle/restructure into a new kit
   validate [path]          Validate a uikit.json against the contract
   info [path]              Print a kit's tech, templates, and consume steps
 
 ${pc.bold("Examples")}
-  uikit new ./aurora-uikit my-app
-  cd my-app && uikit add dashboard
+  uikit new https://github.com/uikit-studio/base-uikit my-kit
+  uikit remix ./aurora-uikit my-kit
+  cd my-kit && uikit add dashboard
   uikit validate
 `;
 
@@ -34,6 +37,8 @@ async function main(): Promise<number> {
       return add(args);
     case "new":
       return newKit(args);
+    case "remix":
+      return remix(args);
     case "validate":
       return validate(args);
     case "info":

@@ -1,0 +1,422 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uikit.dev/schema/v1.json",
+  "title": "uikit.json",
+  "description": "The UIKit manifest contract — describes a UI kit for the gallery, CLI, and generator.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "manifestVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "github": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "tech": {
+      "type": "object",
+      "properties": {
+        "frameworks": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "react",
+              "vue",
+              "web-components"
+            ]
+          }
+        },
+        "styling": {
+          "default": "tailwind",
+          "type": "string",
+          "enum": [
+            "tailwind",
+            "css-vars",
+            "both"
+          ]
+        },
+        "tailwindVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "icons": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deps": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "frameworks",
+        "styling"
+      ],
+      "additionalProperties": false
+    },
+    "design": {
+      "type": "object",
+      "properties": {
+        "tokens": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+        },
+        "tailwindPreset": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+        },
+        "themeCss": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+        },
+        "fonts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "family": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source": {
+                "default": "google",
+                "type": "string",
+                "enum": [
+                  "google",
+                  "local",
+                  "system",
+                  "url"
+                ]
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "family",
+              "source"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "palettes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "primary": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "name",
+              "primary"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "modes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "light",
+              "dark"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "surface": {
+      "type": "object",
+      "properties": {
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "react": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+              },
+              "vue": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+              },
+              "web": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "preview": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "templates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "route": {
+                "type": "string",
+                "minLength": 1
+              },
+              "preview": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "prompts": {
+      "type": "object",
+      "properties": {
+        "origin": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+        },
+        "extend": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+        },
+        "skillVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "consume": {
+      "type": "object",
+      "properties": {
+        "skill": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+        },
+        "skillName": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "steps": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "entry": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "skill",
+        "skillName",
+        "steps"
+      ],
+      "additionalProperties": false
+    },
+    "media": {
+      "type": "object",
+      "properties": {
+        "demoUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "screenshots": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "logo",
+                  "landing",
+                  "dashboard",
+                  "other"
+                ]
+              },
+              "src": {
+                "type": "string",
+                "minLength": 1
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "kind",
+              "src"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "screenshots"
+      ],
+      "additionalProperties": false
+    },
+    "registry": {
+      "type": "object",
+      "properties": {
+        "install": {
+          "type": "string",
+          "minLength": 1
+        },
+        "components": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!\\/)(?!.*\\.\\.).+$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "manifestVersion",
+    "id",
+    "name",
+    "version",
+    "tech",
+    "media"
+  ],
+  "additionalProperties": false
+}

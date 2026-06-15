@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+import { add } from "./commands/add.js";
+import { info } from "./commands/info.js";
+import { init } from "./commands/init.js";
+import { newKit } from "./commands/new.js";
+import { validate } from "./commands/validate.js";
+import { log, pc } from "./lib/log.js";
+
+const HELP = `${pc.bold("uikit")} — work with UI kits from the UIKit gallery
+
+${pc.bold("Usage")}
+  uikit <command> [args]
+
+${pc.bold("Commands")}
+  init [path]              Wire a cloned kit's skill into the project
+  add <item...>            Copy components/blocks/templates into your project
+  new <src> <dir>          Clone/copy a kit into <dir> and init it
+  validate [path]          Validate a uikit.json against the contract
+  info [path]              Print a kit's tech, templates, and consume steps
+
+${pc.bold("Examples")}
+  uikit new ./aurora-uikit my-app
+  cd my-app && uikit add dashboard
+  uikit validate
+`;
+
+async function main(): Promise<number> {
+  const [cmd, ...args] = process.argv.slice(2);
+
+  switch (cmd) {
+    case "init":
+      return init(args);
+    case "add":
+      return add(args);
+    case "new":
+      return newKit(args);
+    case "validate":
+      return validate(args);
+    case "info":
+      return info(args);
+    case undefined:
+    case "-h":
+    case "--help":
+    case "help":
+      console.log(HELP);
+      return 0;
+    default:
+      log.error(`unknown command: ${cmd}`);
+      console.log(HELP);
+      return 1;
+  }
+}
+
+main()
+  .then((code) => process.exit(code))
+  .catch((err: unknown) => {
+    log.error(err instanceof Error ? err.message : String(err));
+    process.exit(1);
+  });

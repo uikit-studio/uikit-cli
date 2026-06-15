@@ -1,0 +1,36 @@
+/* REPLACE Name — Tailwind v4 theme. Fill tokens from design/tokens.json. */
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-background: #REPLACE;
+  --color-foreground: #REPLACE;
+  --color-muted: #REPLACE;
+  --color-muted-foreground: #REPLACE;
+  --color-border: #REPLACE;
+  --color-card: #REPLACE;
+  --color-primary: #REPLACE;
+  --color-primary-foreground: #REPLACE;
+
+  --radius: 0.75rem;
+  --shadow-card: 0 8px 30px -12px rgba(0, 0, 0, 0.18);
+}
+
+@layer base {
+  .dark {
+    --color-background: #REPLACE;
+    --color-foreground: #REPLACE;
+    --color-muted: #REPLACE;
+    --color-muted-foreground: #REPLACE;
+    --color-border: #REPLACE;
+    --color-card: #REPLACE;
+    --color-primary: #REPLACE;
+    --color-primary-foreground: #REPLACE;
+  }
+
+  html {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}

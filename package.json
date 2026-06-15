@@ -1,0 +1,56 @@
+{
+  "name": "uikit-studio",
+  "version": "0.1.0",
+  "description": "The uikit CLI — scaffold, validate, and add UI kits from the uikit.studio gallery. Includes the kit contract and the uikit-standard generator.",
+  "keywords": [
+    "uikit",
+    "ui-kit",
+    "design-system",
+    "tailwind",
+    "react",
+    "vue",
+    "cli",
+    "scaffold",
+    "shadcn"
+  ],
+  "homepage": "https://uikit.studio",
+  "bugs": "https://github.com/uikit-studio/uikit-studio/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uikit-studio/uikit-studio.git"
+  },
+  "license": "MIT",
+  "author": "uikit.studio",
+  "type": "module",
+  "bin": {
+    "uikit": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "schema",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "node build.mjs",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "esbuild": "^0.24.2",
+    "picocolors": "^1.1.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.4",
+    "zod": "^4.0.5"
+  }
+}

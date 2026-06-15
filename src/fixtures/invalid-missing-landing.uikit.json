@@ -1,0 +1,10 @@
+{
+  "manifestVersion": 1,
+  "id": "no-landing",
+  "name": "No Landing",
+  "version": "1.0.0",
+  "tech": { "frameworks": ["react"] },
+  "media": {
+    "screenshots": [{ "kind": "logo", "src": "screenshots/logo.svg" }]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "id": "spark",
+  "name": "Spark",
+  "version": "0.1.0",
+  "tech": {
+    "frameworks": ["react"]
+  },
+  "media": {
+    "screenshots": [
+      { "kind": "logo", "src": "screenshots/logo.svg" },
+      { "kind": "landing", "src": "screenshots/landing.png" }
+    ]
+  }
+}

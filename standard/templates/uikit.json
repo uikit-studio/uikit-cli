@@ -1,0 +1,75 @@
+{
+  "$schema": "https://uikit.dev/schema/v1.json",
+  "manifestVersion": 1,
+  "id": "REPLACE-slug",
+  "name": "REPLACE Name",
+  "version": "1.0.0",
+  "description": "REPLACE one-line description.",
+  "author": { "name": "REPLACE", "github": "REPLACE" },
+  "license": "MIT",
+  "homepage": "https://REPLACE-demo.example.com",
+  "repository": "https://github.com/REPLACE/REPLACE-uikit",
+
+  "categories": ["REPLACE"],
+  "tags": ["REPLACE"],
+
+  "tech": {
+    "frameworks": ["react"],
+    "styling": "both",
+    "tailwindVersion": "^4.0.0",
+    "icons": "lucide",
+    "deps": ["class-variance-authority", "clsx", "tailwind-merge"]
+  },
+
+  "design": {
+    "tokens": "design/tokens.json",
+    "tailwindPreset": "design/tailwind-preset.js",
+    "themeCss": "design/theme.css",
+    "fonts": [{ "family": "Inter", "source": "google" }],
+    "palettes": [{ "name": "default", "primary": "#REPLACE" }],
+    "modes": ["light", "dark"]
+  },
+
+  "surface": {
+    "components": [
+      { "name": "Button", "react": "react/components/button.tsx" },
+      { "name": "Card", "react": "react/components/card.tsx" }
+    ],
+    "templates": [
+      { "name": "Dashboard", "route": "/dashboard", "preview": "screenshots/dashboard.svg" },
+      { "name": "Landing", "route": "/", "preview": "screenshots/landing.svg" }
+    ]
+  },
+
+  "prompts": {
+    "origin": "prompts/build.md",
+    "extend": "prompts/extend.md",
+    "skillVersion": "uikit-standard@1.0"
+  },
+
+  "consume": {
+    "skill": ".claude/skills/REPLACE-slug",
+    "skillName": "REPLACE-slug-ui",
+    "steps": [
+      "git clone https://github.com/REPLACE/REPLACE-uikit my-app",
+      "cd my-app && npx uikit-studio init",
+      "Open in Claude Code and ask: 'build a dashboard using this kit'"
+    ],
+    "entry": "USAGE.md",
+    "requires": ["node>=20", "tailwind>=4"]
+  },
+
+  "media": {
+    "demoUrl": "https://REPLACE-demo.example.com",
+    "screenshots": [
+      { "kind": "logo", "src": "screenshots/logo.svg" },
+      { "kind": "landing", "src": "screenshots/landing.svg" },
+      { "kind": "dashboard", "src": "screenshots/dashboard.svg" }
+    ]
+  },
+
+  "registry": {
+    "install": "npx uikit-studio add REPLACE-slug",
+    "components": "registry/index.json"
+  }
+}

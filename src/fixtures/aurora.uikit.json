@@ -1,0 +1,77 @@
+{
+  "$schema": "https://uikit.dev/schema/v1.json",
+  "manifestVersion": 1,
+  "id": "aurora",
+  "name": "Aurora",
+  "version": "1.2.0",
+  "description": "Clean SaaS kit with a glassy dashboard.",
+  "author": { "name": "UIKit Team", "github": "uikit-studio", "url": "https://uikit.studio" },
+  "license": "MIT",
+  "homepage": "https://aurora-demo.uikit.dev",
+  "repository": "https://github.com/uikit-studio/aurora-uikit",
+
+  "categories": ["saas", "dashboard", "dark-first"],
+  "tags": ["glassmorphism", "blue", "inter"],
+
+  "tech": {
+    "frameworks": ["react"],
+    "styling": "tailwind",
+    "tailwindVersion": "^4.0.0",
+    "icons": "lucide",
+    "deps": ["@radix-ui/react-slot", "class-variance-authority"]
+  },
+
+  "design": {
+    "tokens": "design/tokens.json",
+    "tailwindPreset": "design/tailwind-preset.js",
+    "themeCss": "design/theme.css",
+    "fonts": [{ "family": "Inter", "source": "google" }],
+    "palettes": [{ "name": "default", "primary": "#3B82F6" }],
+    "modes": ["light", "dark"]
+  },
+
+  "surface": {
+    "components": [
+      { "name": "Button", "react": "react/components/button.tsx" },
+      { "name": "Card", "react": "react/components/card.tsx" }
+    ],
+    "blocks": [{ "name": "PricingTable", "preview": "screenshots/pricing.png" }],
+    "templates": [
+      { "name": "Dashboard", "route": "/dashboard", "preview": "screenshots/dashboard.png" },
+      { "name": "Landing", "route": "/", "preview": "screenshots/landing.png" }
+    ]
+  },
+
+  "prompts": {
+    "origin": "prompts/build.md",
+    "extend": "prompts/extend.md",
+    "skillVersion": "uikit-standard@1.0"
+  },
+
+  "consume": {
+    "skill": ".claude/skills/aurora",
+    "skillName": "aurora-ui",
+    "steps": [
+      "git clone https://github.com/uikit-studio/aurora-uikit my-app",
+      "cd my-app && npx uikit-studio init",
+      "Open in Claude Code and ask: 'build a billing dashboard using this kit'"
+    ],
+    "entry": "USAGE.md",
+    "requires": ["node>=20", "tailwind>=4"]
+  },
+
+  "media": {
+    "demoUrl": "https://aurora-demo.uikit.dev",
+    "screenshots": [
+      { "kind": "logo", "src": "screenshots/logo.svg" },
+      { "kind": "landing", "src": "screenshots/landing.png" },
+      { "kind": "dashboard", "src": "screenshots/dashboard.png" },
+      { "kind": "other", "src": "screenshots/pricing.png", "label": "Pricing" }
+    ]
+  },
+
+  "registry": {
+    "install": "npx uikit-studio add aurora",
+    "components": "registry/index.json"
+  }
+}

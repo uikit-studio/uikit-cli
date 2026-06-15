@@ -1,6 +1,6 @@
 {
   "name": "uikit-studio",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "The uikit CLI — scaffold, validate, and add UI kits from the uikit.studio gallery. Includes the kit contract and the uikit-standard generator.",
   "keywords": [
     "uikit",

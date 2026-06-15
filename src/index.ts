@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { add } from "./commands/add.js";
+import { agent } from "./commands/agent.js";
 import { info } from "./commands/info.js";
 import { init } from "./commands/init.js";
 import { newKit } from "./commands/new.js";
@@ -19,11 +20,14 @@ ${pc.bold("Commands")}
   remix <src> <dir>        Like new, + a brief to restyle/restructure into a new kit
   validate [path]          Validate a uikit.json against the contract
   info [path]              Print a kit's tech, templates, and consume steps
+  agent <id|url>           Fetch a kit's agent-readable design spec (--json, --save)
 
 ${pc.bold("Examples")}
   uikit new https://github.com/uikit-studio/base-uikit my-kit
   uikit remix ./aurora-uikit my-kit
   cd my-kit && uikit add dashboard
+  uikit agent spark                       # print the design brief an agent can rebuild
+  uikit agent https://uikit.studio/kit/spark --save
   uikit validate
 `;
 
@@ -43,6 +47,8 @@ async function main(): Promise<number> {
       return validate(args);
     case "info":
       return info(args);
+    case "agent":
+      return agent(args);
     case undefined:
     case "-h":
     case "--help":

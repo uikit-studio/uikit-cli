@@ -40,6 +40,12 @@ A finished kit MUST:
 4. **Support EN + AR with full RTL** — a language toggle, an Arabic typeface, and a
    layout that flips correctly (`dir="rtl"`).
 5. **Validate.** `npx uikit-studio validate` passes.
+6. **Be agent-ready / consumable by URL.** Ship `AGENTS.md` + `llms.txt` at the repo
+   root so another developer's AI agent can reproduce this exact design from one link.
+   `llms.txt` is a self-contained design brief (prompt, light + dark tokens, fonts,
+   radius, components, pages); `AGENTS.md` tells an agent how to consume it. Keep both
+   in sync with `design/`. (Listing the kit on uikit.studio also auto-generates
+   `/kit/<id>/llms.txt` + `/manifest.json`.)
 
 ## Required pages (every kit)
 
@@ -96,6 +102,9 @@ and fonts:
    then `npx uikit-studio validate` until it passes.
 10. **Docs + git** → `USAGE.md` (lead with "cd <framework> && pnpm install &&
     pnpm dev"), `prompts/build.md`, `prompts/extend.md`, `README.md`, then `git init`.
+11. **Agent-ready files** → `AGENTS.md` + `llms.txt` at the repo root (design brief +
+    how-to-consume), each with a "build me a site with this design: <url>" prompt and a
+    README "Use this design with an AI agent" section.
 
 ## Frameworks
 

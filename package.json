@@ -23,7 +23,7 @@
   "author": "uikit.studio",
   "type": "module",
   "bin": {
-    "uikit": "./dist/index.js"
+    "uikit": "dist/index.js"
   },
   "files": [
     "dist",

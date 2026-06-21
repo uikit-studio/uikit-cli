@@ -34,12 +34,30 @@ contract/skill/registry. Each framework folder runs on its own.
 
 ## Required routes (in every runnable app)
 
+The route set depends on the kit's **`type`** (in `uikit.json`).
+
+### `type: "app"` (default)
+
 | Route | Is |
 | --- | --- |
 | `/` | Landing — hero · marquee · features grid · dark bento · CTA · footer |
 | `/pricing` | Full pricing page (or a second marketing page that fits the brief) |
 | `/dashboard` | Sidebar · KPI stat cards · data table |
 | `/components` | Design-system showcase — colors · type · every component variant |
+
+### `type: "ecommerce"` (storefront — Salla/Zid/Shopify, Saudi/Khaliji)
+
+| Route | Is |
+| --- | --- |
+| `/` | Storefront — banner/hero · category grid · featured collections · best-sellers · trust/payment row · footer |
+| `/products` | Listing — search · filter panel (price/category/color/size/brand) · sort · product grid · pagination · empty/loading |
+| `/product` | Product detail — gallery · price (SAR, sale) · variants · qty stepper · add-to-cart · reviews · related |
+| `/cart` | Cart/checkout — line items · coupon · summary (VAT 15%) · payment options (mada/Apple Pay/Tabby/Tamara/STC Pay/COD) |
+| `/components` | Design-system showcase — colors · type · every component variant |
+
+Ecommerce components: ProductCard · PriceTag · RatingStars · VariantSwatch ·
+QuantityStepper · FilterPanel/FacetGroup · SortSelect · CartLine/CartDrawer · Breadcrumb ·
+status Badge (sale/new/sold-out) · TrustBadges · CollectionCard. **Arabic-first + RTL primary.**
 
 `routes/layout.tsx` = the app shell: logo · page nav · **EN/AR toggle** ·
 **dark toggle** · CTA. All page copy comes from `i18n/en.ts` + `i18n/ar.ts`.

@@ -42,7 +42,16 @@ export const COLOR_MODES = ["light", "dark"] as const;
 export const SCREENSHOT_KINDS = ["logo", "landing", "dashboard", "other"] as const;
 export const FONT_SOURCES = ["google", "local", "system", "url"] as const;
 
+/**
+ * A kit's structural type — it decides the *required pages*, not just a gallery
+ * facet. `app` is the classic SaaS shape (landing · pricing · dashboard ·
+ * components); `ecommerce` is a storefront (storefront · products · product ·
+ * cart · components). Distinct from the free-form `categories`/`tags`.
+ */
+export const KIT_TYPES = ["app", "ecommerce"] as const;
+
 export const frameworkSchema = z.enum(FRAMEWORKS);
+export const kitTypeSchema = z.enum(KIT_TYPES);
 export const screenshotKindSchema = z.enum(SCREENSHOT_KINDS);
 
 export const authorSchema = z.object({
@@ -156,6 +165,7 @@ export const baseManifestSchema = z.object({
   homepage: z.url().optional(),
   repository: z.url().optional(),
 
+  type: kitTypeSchema.default("app"),
   categories: z.array(slug).optional(),
   tags: z.array(z.string().min(1)).optional(),
 

@@ -28,7 +28,23 @@ describe("validateManifest — valid fixtures", () => {
     if (result.ok) {
       // styling defaults applied
       expect(result.data.tech.styling).toBe("tailwind");
+      // type defaults to "app" when omitted
+      expect(result.data.type).toBe("app");
     }
+  });
+
+  it("accepts type: ecommerce", () => {
+    const result = validateManifest({
+      manifestVersion: 1,
+      id: "x",
+      name: "X",
+      version: "1.0.0",
+      type: "ecommerce",
+      tech: { frameworks: ["react"] },
+      media: { screenshots: [{ kind: "logo", src: "a" }, { kind: "landing", src: "b" }] },
+    });
+    expect(result.ok).toBe(true);
+    if (result.ok) expect(result.data.type).toBe("ecommerce");
   });
 });
 
@@ -64,6 +80,20 @@ describe("validateManifest — invalid fixtures", () => {
     expect(result.ok).toBe(false);
   });
 
+  it("rejects an unknown kit type", () => {
+    const result = validateManifest({
+      manifestVersion: 1,
+      id: "x",
+      name: "X",
+      version: "1.0.0",
+      type: "blog",
+      tech: { frameworks: ["react"] },
+      media: { screenshots: [{ kind: "logo", src: "a" }, { kind: "landing", src: "b" }] },
+    });
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.issues.some((i) => i.path === "type")).toBe(true);
+  });
+
   it("rejects non-object input without throwing", () => {
     expect(validateManifest(null).ok).toBe(false);
     expect(validateManifest("nope").ok).toBe(false);
@@ -96,5 +126,6 @@ describe("buildJsonSchema", () => {
     expect(props).toHaveProperty("id");
     expect(props).toHaveProperty("tech");
     expect(props).toHaveProperty("media");
+    expect(props).toHaveProperty("type");
   });
 });

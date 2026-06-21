@@ -10,6 +10,7 @@
   "homepage": "https://REPLACE-demo.example.com",
   "repository": "https://github.com/REPLACE/REPLACE-uikit",
 
+  "type": "app",
   "categories": ["REPLACE"],
   "tags": ["REPLACE"],
 

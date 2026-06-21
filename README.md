@@ -96,10 +96,13 @@ Then **list it in the gallery**: open a PR adding `apps/web/content/kits/<id>.js
 to [`uikit-studio/uikit`](https://github.com/uikit-studio/uikit). CI validates it; a
 maintainer merges; it's live. Full guide: <https://uikit.studio/submit>.
 
-> A kit must **run out of the box** and be a full product (landing, pricing,
-> dashboard, components showcase), with a real design system (light + dark) and
-> EN/AR + RTL. Pick a fresh identity — never copy another kit's theme. Ship
-> `AGENTS.md` + `llms.txt` at the root so it's **agent-ready** (reproducible by URL).
+> A kit must **run out of the box** and be a full product, with a real design system
+> (light + dark) and EN/AR + RTL. The required pages depend on the kit's **`type`**:
+> `app` (default) → landing · pricing · dashboard · components; `ecommerce` →
+> storefront · products (search + filter) · product detail · cart/checkout · components.
+> Scaffold a store with `uikit new <src> <dir> --type ecommerce`. Pick a fresh identity —
+> never copy another kit's theme. Ship `AGENTS.md` + `llms.txt` at the root so it's
+> **agent-ready** (reproducible by URL).
 
 ## What's in this repo
 

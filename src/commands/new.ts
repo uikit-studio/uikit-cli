@@ -12,9 +12,18 @@ import { init } from "./init.js";
 export async function newKit(args: string[]): Promise<number> {
   const [source, dir] = args.filter((a) => !a.startsWith("-"));
   if (!source || !dir) {
-    log.error("usage: uikit new <git-url|local-path> <dir>");
+    log.error("usage: uikit new <git-url|local-path> <dir> [--type app|ecommerce]");
     return 1;
   }
+  // Everything that isn't the two positionals (e.g. `--type ecommerce`, value
+  // included) is forwarded to init with its order preserved.
+  let seenSource = false;
+  let seenDir = false;
+  const passthrough = args.filter((a) => {
+    if (!seenSource && a === source) return (seenSource = true), false;
+    if (!seenDir && a === dir) return (seenDir = true), false;
+    return true;
+  });
   const dest = resolve(process.cwd(), dir);
   if (existsSync(dest)) {
     log.error(`${dir} already exists`);
@@ -42,5 +51,5 @@ export async function newKit(args: string[]): Promise<number> {
   }
   log.ok(`created ${dir}`);
 
-  return init([dest]);
+  return init([dest, ...passthrough]);
 }

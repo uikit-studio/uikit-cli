@@ -22,6 +22,7 @@ Everything else is optional but strongly encouraged.
 | Section | Holds |
 | --- | --- |
 | `author` | `{ name, github?, url? }` |
+| `type` | `app` (default) or `ecommerce` — the **structural type**: it decides the required pages (app → dashboard set; ecommerce → storefront set), not just a gallery facet |
 | `categories` / `tags` | facets for the gallery |
 | `tech` | `frameworks[]`, `styling` (`tailwind`/`css-vars`/`both`), `tailwindVersion?`, `icons?`, `deps[]` |
 | `design` | `tokens`, `tailwindPreset`, `themeCss`, `fonts[]`, `palettes[]`, `modes[]` |

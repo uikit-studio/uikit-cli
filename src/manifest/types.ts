@@ -8,6 +8,7 @@ import type {
   designSchema,
   fontSchema,
   frameworkSchema,
+  kitTypeSchema,
   manifestSchema,
   mediaSchema,
   paletteSchema,
@@ -27,6 +28,7 @@ export type Manifest = z.infer<typeof manifestSchema>;
 export type ManifestInput = z.input<typeof baseManifestSchema>;
 
 export type Framework = z.infer<typeof frameworkSchema>;
+export type KitType = z.infer<typeof kitTypeSchema>;
 export type ScreenshotKind = z.infer<typeof screenshotKindSchema>;
 
 export type Author = z.infer<typeof authorSchema>;

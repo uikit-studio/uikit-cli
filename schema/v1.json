@@ -62,6 +62,14 @@
       "type": "string",
       "format": "uri"
     },
+    "type": {
+      "default": "app",
+      "type": "string",
+      "enum": [
+        "app",
+        "ecommerce"
+      ]
+    },
     "categories": {
       "type": "array",
       "items": {

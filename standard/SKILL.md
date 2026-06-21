@@ -47,7 +47,27 @@ A finished kit MUST:
    in sync with `design/`. (Listing the kit on uikit.studio also auto-generates
    `/kit/<id>/llms.txt` + `/manifest.json`.)
 
-## Required pages (every kit)
+## Kit type — pick the page set
+
+A kit declares a **`type`** in `uikit.json` that decides its required pages:
+
+- **`app`** (default) — a SaaS product. Required pages: **landing · pricing ·
+  dashboard · components** (below).
+- **`ecommerce`** — an online store (Salla / Zid / Shopify–style, tuned for the
+  **Saudi / Khaliji** market). Required pages: **storefront · products (search +
+  filter) · product detail · cart/checkout · components**. Build it against the
+  ecommerce brief (`prompts/build.ecommerce.md`); scaffold with
+  `uikit new <base> <dir> --type ecommerce` so the runnable app renders the storefront
+  set. Signature components: ProductCard, PriceTag, RatingStars, VariantSwatch,
+  QuantityStepper, FilterPanel/FacetGroup, SortSelect, CartLine/CartDrawer, Breadcrumb,
+  status Badge (sale/new/sold-out), TrustBadges, CollectionCard. Style: **Arabic-first +
+  RTL primary**, SAR (﷼) + VAT 15%, local payments/trust (mada · Apple Pay · Tabby ·
+  Tamara · STC Pay · COD).
+
+The rest of this skill describes the **`app`** type. For `ecommerce`, keep every rule
+the same and swap the required-pages list for the storefront set above.
+
+## Required pages (app type)
 
 Build these as real routes in the runnable app:
 
@@ -82,8 +102,9 @@ and fonts:
 
 ## Process (in order)
 
-1. **Parse the brief** → id (slug), name, category/tags, palette, fonts, radius,
-   personality, target frameworks (React first).
+1. **Parse the brief** → id (slug), name, **type (`app` | `ecommerce`)**, category/tags,
+   palette, fonts, radius, personality, target frameworks (React first). If it's a store,
+   set `type:"ecommerce"` and follow the storefront page set + `build.ecommerce.md`.
 2. **Design tokens** → `design/tokens.json` (DTCG) → `design/theme.css` (Tailwind v4
    `@theme`, incl. `--font-display/--font-sans/--font-mono`, `--color-mark`, dark
    block, and an `[dir="rtl"]` font swap) → `design/tailwind-preset.js` (v3 compat).
@@ -116,7 +137,9 @@ ships in `uikit.json` `tech.frameworks`.
 ## Hard rules
 
 - **Run-it-or-it-doesn't-ship.** Every framework folder runs with `pnpm dev`.
-- **Required pages:** landing · pricing · dashboard · components-showcase.
+- **Required pages by `type`:** `app` → landing · pricing · dashboard · components-showcase;
+  `ecommerce` → storefront · products (search + filter) · product detail · cart/checkout ·
+  components-showcase.
 - **EN + AR + RTL** are mandatory, not optional.
 - **Validate before done:** `npx uikit-cli validate` passes.
 - **Required screenshots:** `logo` + `landing`. Author them.

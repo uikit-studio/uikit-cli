@@ -14,9 +14,9 @@ ${pc.bold("Usage")}
   uikit <command> [args]
 
 ${pc.bold("Commands")}
-  init [path]              Wire a cloned kit's skill into the project
+  init [path] [--type t]   Wire a cloned kit's skill into the project (t: app|ecommerce)
   add <item...>            Copy components/blocks/templates into your project
-  new <src> <dir>          Clone/copy a kit into <dir> and init it
+  new <src> <dir> [--type t]   Clone/copy a kit into <dir> and init it (t: app|ecommerce)
   remix <src> <dir>        Like new, + a brief to restyle/restructure into a new kit
   validate [path]          Validate a uikit.json against the contract
   info [path]              Print a kit's tech, templates, and consume steps
@@ -24,6 +24,7 @@ ${pc.bold("Commands")}
 
 ${pc.bold("Examples")}
   uikit new https://github.com/uikit-studio/base-uikit my-kit
+  uikit new ./base-uikit my-store --type ecommerce   # storefront page set
   uikit remix ./aurora-uikit my-kit
   cd my-kit && uikit add dashboard
   uikit agent spark                       # print the design brief an agent can rebuild
